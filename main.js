@@ -1,53 +1,49 @@
-Promise.all([fetch('../templates/main.html')
-	.then(res => res.text()),
-fetch('./vwdata.json')
-	.then(res => res.json())
+Promise.all([
+	fetch('../templates/main.html').then(res => res.text()),
+	fetch('./vwdata.json').then(res => res.json()).then(opacity)
 ])
-	.then(([source, data]) => {
-		const yearTotals = data.children.map(x => x.total).sort((a, b) => a - b);
-		const yearMax = yearTotals[yearTotals.length - 1];
-
-		const monthTotals = data.children[1].children.map(x => x.total).sort((a, b) => a - b);
-		const monthMax = monthTotals[monthTotals.length - 1];
-
-		const addOpacity = (x, max) => Object.assign(x, { opacity: x.total / max });
-
-		data.children.forEach((child, i) => {
-			data.children = data.children.map(year => addOpacity(year, yearMax));
-			child.children = child.children.map(month => addOpacity(month, monthMax));
-		});
-
-		return [source, data];
-	})
 	.then(([source, initialData]) => {
 		const template = Handlebars.compile(source);
+		const component = document.querySelector('.container');
 		const segments = document.getElementsByClassName('heatmap-segment');
-		const back = document.getElementsByClassName('back');
+		const backBtns = document.getElementsByClassName('back');
 
-		addClickEvent(initialData);
+		setupInteraction(initialData);
 
-		function addClickEvent (data) {
-			back[0].style.display = data === initialData ? 'none' : '';
+		function setupInteraction (data) {
+			backBtns[0].style.display = data === initialData ? 'none' : '';
 
-			for (var i = 0; i < segments.length; i++) {
-				if (!data.children) return;
-				let childData = data.children[i];
+			if (!data.children) return;
+
+			for (let i = 0; i < segments.length; i++) {
 				segments[i].addEventListener('click', () => {
-					expandSegments(childData);
-					setBackButton(data);
+					renderStoryline(data.children[i]);
+					renderBackBtn(data);
 				});
 			}
 		}
 
-		function expandSegments (data) {
-			document.querySelector('.container').innerHTML = template(data);
-			addClickEvent(data);
+		function renderStoryline (data) {
+			component.innerHTML = template(data);
+			setupInteraction(data);
 		}
 
-		function setBackButton (data) {
-			back[0].addEventListener('click', () => {
-				expandSegments(data);
-				data === initialData ? setBackButton(data) : setBackButton(initialData);
+		function renderBackBtn (data) {
+			backBtns[0].addEventListener('click', () => {
+				renderStoryline(data);
+				renderBackBtn(initialData);
 			});
 		}
 	});
+
+function opacity (data) {
+	// TODO: make legible and put elsewhere
+	const yearlyTotals = data.children.map(x => x.total);
+	const monthlyTotals = [].concat(...data.children.map(x => x.children.map(x => x.total))) // any month's opacity will be proportional to monthly totals across all years
+	const max = x => x.sort((a, b) => a - b)[x.length - 1];
+	const yearMax = max(yearlyTotals), monthMax = max(monthlyTotals);
+	const addOpacity = (x, max) => Object.assign({}, x, { opacity: x.total / max });
+	const newKids = data.children.map(year => addOpacity(year, yearMax));
+	newKids.forEach(x => x.children = x.children.map(month => addOpacity(month, monthMax)));
+	return Object.assign({}, data, { children: newKids });
+}
