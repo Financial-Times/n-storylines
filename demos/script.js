@@ -25,15 +25,14 @@ Promise.all([
 
 		Handlebars.registerHelper('abbreviate', (word) => {
 			return typeof word === 'string' ? word.substring(0,3) : word;
-		})
-
-		Handlebars.registerHelper('timestamp', (day, month, year) => {
-			let date = new Date(year, month)
-			return date.toLocaleString('en-US', { day: "numeric", month: "long", year: "numeric" })
-
 		});
 
-		document.querySelector('.container').innerHTML = template(data);
+		Handlebars.registerHelper('timestamp', (day, month, year) => {
+			let date = new Date(year, month);
+			return date.toLocaleString('en-US', { day: "numeric", month: "long", year: "numeric" });
+		});
+
+		document.body.innerHTML = template(data);
 
 		const script = document.createElement('script');
 		script.src = '../main.js';

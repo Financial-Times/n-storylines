@@ -4,21 +4,20 @@ Promise.all([
 ])
 	.then(([source, initialData]) => {
 		const template = Handlebars.compile(source);
-		const component = document.querySelector('.container');
-		const segments = document.getElementsByClassName('heatmap-segment');
-		const backBtns = document.getElementsByClassName('back');
+		const component = document.querySelector('.n-storylines');
+		const heatmapSegments = document.getElementsByClassName('n-storylines__heatmap-segment-colour');
+		const backBtns = document.getElementsByClassName('n-storylines__back-btn');
 
 		setupInteraction(initialData);
 
 		function setupInteraction (data) {
 			backBtns[0].style.display = data === initialData ? 'none' : '';
-
 			if (!data.children) return;
 
-			for (let i = 0; i < segments.length; i++) {
-				segments[i].addEventListener('click', () => {
+			for (let i = 0; i < heatmapSegments.length; i++) {
+				heatmapSegments[i].addEventListener('click', () => {
 					renderStoryline(data.children[i]);
-					renderBackBtn(data);
+					setupBackBtn(data);
 				});
 			}
 		}
@@ -28,22 +27,30 @@ Promise.all([
 			setupInteraction(data);
 		}
 
-		function renderBackBtn (data) {
+		function setupBackBtn (data) {
 			backBtns[0].addEventListener('click', () => {
 				renderStoryline(data);
-				renderBackBtn(initialData);
+				setupBackBtn(initialData);
 			});
 		}
 	});
 
 function opacity (data) {
-	// TODO: make legible and put elsewhere
 	const yearlyTotals = data.children.map(x => x.total);
-	const monthlyTotals = [].concat(...data.children.map(x => x.children.map(x => x.total))) // any month's opacity will be proportional to monthly totals across all years
-	const max = x => x.sort((a, b) => a - b)[x.length - 1];
-	const yearMax = max(yearlyTotals), monthMax = max(monthlyTotals);
-	const addOpacity = (x, max) => Object.assign({}, x, { opacity: x.total / max });
-	const newKids = data.children.map(year => addOpacity(year, yearMax));
-	newKids.forEach(x => x.children = x.children.map(month => addOpacity(month, monthMax)));
-	return Object.assign({}, data, { children: newKids });
+	const monthlyTotals = [].concat(
+		...data.children.map(x => x.children.map(x => x.total))
+	);
+
+	const addOpacity = (element, range) => {
+		const opacity = element.total / Math.max(...range);
+		return Object.assign({}, element, { opacity });
+	};
+
+	const opaqueChildren = data.children.map(year => {
+		const result = addOpacity(year, yearlyTotals);
+		result.children = year.children.map(month => addOpacity(month, monthlyTotals));
+		return result;
+	});
+
+	return Object.assign({}, data, { children: opaqueChildren });
 }

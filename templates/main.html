@@ -1,36 +1,34 @@
-<div class="zoom o-typography-aside__body--small">
-	Tap to zoom into years
-</div>
+<div class="n-storylines">
+	<div class="n-storylines__info o-typography-aside__body--small">
+		Tap to zoom into years
+	</div>
 
-<div class="total-stories o-typography-aside__body--small">
-	{{total}} stories total
-</div>
+	<div class="n-storylines__content-count o-typography-aside__body--small">
+		{{total}} stories total
+	</div>
 
-
-<div class="timeline">
-  <div class="back" style="display:none;">◀◀</div>
-	{{#if children}}
+	<div class="n-storylines__timeline-container">
+		<div class="n-storylines__back-btn">◀◀</div>
+		{{#if children}}
 		{{#each children}}
-		<div class="timeline-element">
-			<div class="heatmap-segment" style="opacity: {{opacity}};"></div>
-				<p class="segment-name o-typography-aside__body--small">{{abbreviate name}}</p>
+		<div class="n-storylines__heatmap-segment">
+			<div class="n-storylines__heatmap-segment-colour" style="opacity: {{opacity}};"></div>
+			<p class="n-storylines__heatmap-segment-name o-typography-aside__body--small">{{abbreviate name}}</p>
 		</div>
 		{{/each}}
-	{{else}}
-	<div class="timeline-element">
-	  <div class="heatmap-segment" style="opacity: {{opacity}};"></div>
-		<p class="segment-name o-typography-lead--small"> {{name}} </p>
+		{{else}}
+		<div class="n-storylines__heatmap-segment">
+			<div class="n-storylines__heatmap-segment-colour" style="opacity: {{opacity}};"></div>
+			<p class="n-storylines__heatmap-segment-name o-typography-lead--small">{{name}}</p>
+		</div>
+		{{/if}}
 	</div>
-	{{/if}}
-</div>
 
-<div class="top-stories">
-	<!-- Most popular stories in {{children.name}} -->
-	<ul>
+	<ul class="n-storylines__top-content">
 		{{#each relevantArticles}}
-		<li class="article o-typography-aside__headline--small">{{title}}</li>
+		<li class="o-typography-aside__headline--small">{{title}}</li>
 		<p class="o-typography-timestamp">
-	  {{timestamp day month year}}
+			{{timestamp day month year}}
 		</p>
 		{{/each}}
 	</ul>

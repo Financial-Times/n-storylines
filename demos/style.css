@@ -3,35 +3,33 @@ body {
   background: #fff1e0;
 }
 
-.timeline {
+.n-storylines__timeline-container {
   display: flex;
-  /*background: #fff;*/
   width: 100%;
   padding-top: 10px;
 }
 
-.timeline-element {
+.n-storylines__heatmap-segment {
   width: 100%;
 }
-.heatmap-segment {
+
+.n-storylines__heatmap-segment-colour {
   background: #B11F42;
-  /*border: 1px solid white;*/
   width: 100%;
   height: 20px;
 }
-.segment-name {
-  text-align: center
+.n-storylines__heatmap-segment-name {
+  text-align: center;
 }
 
-.article {
+.n-storylines__top-content {
   list-style-type: none;
 }
 
-
-.zoom {
+.n-storylines__info {
   float: left;
 }
 
-.total-stories {
-  float: right
+.n-storylines__content-count {
+  float: right;
 }
