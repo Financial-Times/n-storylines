@@ -1,0 +1,6 @@
+deployment:
+  release:
+    tag: /v.*/
+    owner: Financial-Times
+    commands:
+      - make npm-publish

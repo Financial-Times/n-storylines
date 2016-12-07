@@ -1,40 +1,41 @@
 <div class="n-storylines">
 	<div class="n-storylines__info o-typography-aside__body--small">
-	{{#if children.0.children}}
+		{{#if children.0.children}}
 		Most popular articles since <span>{{ children.0.name  }}</span>
-	{{else}}
+		{{else}}
 		Most popular articles in <span>{{name}}</span>
-	{{/if}}
+		{{/if}}
 	</div>
 
-  <hr>
+	<hr>
 	<div class="n-storylines__content-count o-typography-aside__body--small">
 		{{total}} articles published
 	</div>
 
 	<div class="n-storylines__timeline-container">
 		<div class="line">
-		<img class="n-storylines__back-btn" src="http://image.webservices.ft.com/v1/images/raw/fticon-v1:arrow-left?source=o-icons"/>
-		{{#if children}}
-		{{#each children}}
-		<div class="n-storylines__heatmap-segment">
-			<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
-			<p class="n-storylines__heatmap-segment-name o-typography-aside__body--small">{{name}}</p>
+			<img class="n-storylines__back-btn" src="http://image.webservices.ft.com/v1/images/raw/fticon-v1:arrow-left?source=o-icons"/>
+			{{#if children}}
+			{{#each children}}
+			<div class="n-storylines__heatmap-segment">
+				<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
+				<p class="n-storylines__heatmap-segment-name o-typography-aside__body--small">{{name}}</p>
+			</div>
+			{{/each}}
+			{{else}}
+			<div class="n-storylines__heatmap-segment">
+				<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
+				<p class="n-storylines__heatmap-segment-name o-typography-aside__body--small">{{name}}</p>
+			</div>
+			{{/if}}
 		</div>
-		{{/each}}
-		{{else}}
-		<div class="n-storylines__heatmap-segment">
-			<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
-			<p class="n-storylines__heatmap-segment-name o-typography-aside__body--small">{{name}}</p>
-		</div>
-		{{/if}}
+		<ul class="n-storylines__top-content">
+			{{#each relevantArticles}}
+			<li class="n-storylines__article o-typography-aside__headline--small">
+				<a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}">{{title}}</a>
+				<p class="o-typography-timestamp">{{year}}</p>
+			</li>
+			{{/each}}
+		</ul>
 	</div>
-	<ul class="n-storylines__top-content">
-		{{#each relevantArticles}}
-		<li class="n-storylines__article o-typography-aside__headline--small">
-	  <a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}">{{title}}</a>
-		  <p class="o-typography-timestamp">{{year}}</p>
-	</li>
-		{{/each}}
-	</ul>
 </div>
