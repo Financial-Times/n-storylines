@@ -43,5 +43,5 @@ function init () {
 
 module.exports = {
 	init,
-	decorate: require('./lib/dotPosition')
+	decorate: require('./lib/decorate')
 };
