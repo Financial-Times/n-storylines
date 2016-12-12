@@ -6,7 +6,7 @@ gh-pages: build
 	@git commit -m 'update gh-pages'
 	@git push origin HEAD:origin/gh-pages
 	@git reset --hard HEAD~
-	@git pop
+	@git stash pop
 
 run:
 	http-server
