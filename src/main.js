@@ -1,4 +1,4 @@
-const template = require('./templates/main.html');
+const template = require('../templates/main.html');
 
 function init () {
 	const initialData = window && window.FT && window.FT.storylineData;

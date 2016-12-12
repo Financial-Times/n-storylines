@@ -10,3 +10,6 @@ gh-pages: build
 
 run:
 	http-server
+
+transpile:
+	babel src -d dist

@@ -1,6 +1,9 @@
 {
   "name": "@financial-times/n-storylines",
-  "main": "main.js",
+  "main": "dist/main.js",
+  "scripts": {
+    "prepublish": "make transpile"
+  },
   "devDependencies": {
     "@financial-times/n-handlebars": "^1.15.0",
     "@financial-times/n-webpack": "^2.1.6",
@@ -10,6 +13,8 @@
     "handlebars-loader": "^1.4.0",
     "http-server": "^0.9.0",
     "npm-prepublish": "^1.2.2",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0"
   }
 }
