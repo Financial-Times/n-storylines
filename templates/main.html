@@ -16,13 +16,13 @@
 		<button class="n-storylines__back-btn"><i class="o-icons-icon o-icons-icon--arrow-left"></i>
 		{{#if children.0.children}}
 			</button>
-			{{> partials/years}}
+			{{> n-storylines/templates/partials/years}}
 		{{else if children}}
 			<div class="parent-level">Years</div></button>
-			{{> partials/months}}
+			{{> n-storylines/templates/partials/months}}
 		{{else}}
 		<div class="parent-level">Months</div></button>
-			{{> partials/single-month}}
+			{{> n-storylines/templates/partials/single-month}}
 		{{/if}}
 		</div>
 
@@ -34,7 +34,7 @@
 		{{#each relevantArticles}}
 		<li class="n-storylines__article">
 			<a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}">{{title}}</a>
-			<p class="n-storyline-timestamp">{{day}} {{month}} {{year}}</p>
+			<p class="n-storyline-timestamp">{{timestamp}}</p>
 		</li>
 		{{/each}}
 	</ul>
