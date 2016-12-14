@@ -10,31 +10,26 @@
   margin: 0 auto;
   position: absolute;
   top: 35px;
-  left: -30%;
-  width: 200%;
+	width: 100vw;
+	left: 50%;
+	margin-left: -50vw;
   z-index: -1;
 }
 
-.n-storylines__back-btn {
-	border: none;
-	background: none;
-}
-
-.parent-level {
-	@include oTypographySansBold(s);
-	color: $buttonColor;
-	display: inline-block;
-}
-
-.n-storylines__icon  {
-	@include oIconsGetIcon('arrow-left', $buttonColor, 15);
-}
-
-.n-storylines__scroll {
-  overflow-x: auto;
-  white-space: nowrap;
-  display: flex;
+.n-storylines__scroll-container{
+	margin: 0 auto;
   position: relative;
 	width: 100%;
-	background: inherit;
+	height: 100px;
+}
+
+.n-storylines__scroll-all-months {
+	display: flex;
+	@include oGridRespondTo($until: M) {
+		position: absolute;
+		width: 100vw;
+		left: 50%;
+		margin-left: -50vw;
+		overflow-x: scroll;
+	}
 }

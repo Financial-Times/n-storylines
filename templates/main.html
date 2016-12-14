@@ -8,17 +8,20 @@
 		{{/if}}
 	</div>
 
-	<div class="n-storylines__content-count">
-		{{total}} articles published
-	<button class="n-storylines__back-btn">
-		<i class="n-storylines__icon o-icons-icon o-icons-icon--arrow-left"></i>
-		{{#if children.0.children}}
-			</button>
-		{{else if children}}
-			<div class="parent-level">Years</div></button>
-		{{else}}
-			<div class="parent-level">Months</div></button>
-		{{/if}}
+	<div class="n-storylines__nav">
+		<div class="n-storylines__content-count">
+			{{total}} articles published
+		</div>
+
+		<button class="n-storylines__back-btn o-buttons o-buttons--small o-buttons-icon o-buttons-icon--arrow-left">
+			{{#if children.0.children}}
+				</button>
+			{{else if children}}
+				Years</button>
+			{{else}}
+				Months</button>
+			{{/if}}
+		</div>
 	</div>
 
 	<div class="n-storylines__timeline-container">

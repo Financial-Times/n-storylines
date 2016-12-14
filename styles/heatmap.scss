@@ -1,7 +1,22 @@
 .n-storylines__heatmap-segment {
+	@include oGridRespondTo($until: M) {
+		min-width: 50px;
+	}
   width: 100%;
   margin-top: 10px;
   text-align: center;
+}
+
+.n-storylines__heatmap-segment:first-of-type {
+	@include oGridRespondTo($until: M) {
+		margin-left: 25px;
+	}
+}
+
+.n-storylines__heatmap-segment:last-of-type {
+	@include oGridRespondTo($until: M) {
+		margin-right: 20px;
+	}
 }
 
 .n-storylines__heatmap-segment-colour {
@@ -44,8 +59,4 @@
 
 .no-articles {
   opacity: 0.6;
-}
-
-.n-storylines__all-months {
-  min-width: 50px;
 }
