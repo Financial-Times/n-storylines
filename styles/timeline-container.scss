@@ -30,11 +30,20 @@
 	@include oIconsGetIcon('arrow-left', $buttonColor, 15);
 }
 
-.n-storylines__scroll {
-  overflow-x: auto;
-  white-space: nowrap;
-  display: flex;
+.n-storylines__scroll-container{
+	margin: 0 auto;
   position: relative;
 	width: 100%;
-	background: inherit;
+	height: 100px;
+}
+
+.n-storylines__scroll-all-months {
+	display: flex;
+	position: absolute;
+	width: 100vw;
+	left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	padding: 0 40px;
+	overflow-x: scroll;
 }

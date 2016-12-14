@@ -1,4 +1,7 @@
 .n-storylines__heatmap-segment {
+	@include oGridRespondTo($until: M) {
+		min-width: 50px;
+	}
   width: 100%;
   margin-top: 10px;
   text-align: center;
@@ -44,8 +47,4 @@
 
 .no-articles {
   opacity: 0.6;
-}
-
-.n-storylines__all-months {
-  min-width: 50px;
 }
