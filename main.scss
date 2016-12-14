@@ -14,14 +14,8 @@ $o-typography-is-silent: false;
 
 .n-storylines__container {
 	margin-top: 25px;
-	margin-left: 2%;
-}
-
-.n-storylines {
 	border-top: 8px solid oColorsGetPaletteColor('black');
-  border-bottom: 1px solid $border;
-	margin: 0 auto;
-	width: 90%;
+	border-bottom: 1px solid $border;
 }
 
 .n-storylines__info {

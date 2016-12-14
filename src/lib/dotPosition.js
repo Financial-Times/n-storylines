@@ -4,7 +4,7 @@ module.exports = function yearDots (data) {
 	data.children.forEach(year => {
 		year['dot'] = [];
 	});
-
+	//adds dots and positions them on year segments
 	for(let y = 0; y < data.relevantArticles.length; y++){
 		let article = data.relevantArticles[y];
 		for(let i = 0; i < data.children.length; i++) {
@@ -24,7 +24,7 @@ function monthDots (data) {
 		month['dot'] = [];
 		month['dayDot'] = [];
 	});
-
+	//adds dots and positions them on months in year view
 	for(let y = 0; y < data.relevantArticles.length; y++){
 		let article = data.relevantArticles[y];
 		for(let i = 0; i < data.children.length; i++) {
@@ -34,6 +34,7 @@ function monthDots (data) {
 			}
 		}
 	}
+//adds dots and positions them on months in individual month view
 	data.children.forEach(month => {
 		for(let y = 0; y < month.relevantArticles.length; y++){
 			let article = month.relevantArticles[y]

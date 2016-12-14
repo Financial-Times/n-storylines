@@ -10,19 +10,23 @@
 
 	<div class="n-storylines__content-count">
 		{{total}} articles published
-		<button class="n-storylines__back-btn"><i class="n-storylines__icon o-icons-icon o-icons-icon--arrow-left"></i>
-
+	<button class="n-storylines__back-btn">
+		<i class="n-storylines__icon o-icons-icon o-icons-icon--arrow-left"></i>
+		{{#if children.0.children}}
+			</button>
+		{{else if children}}
+			<div class="parent-level">Years</div></button>
+		{{else}}
+			<div class="parent-level">Months</div></button>
+		{{/if}}
 	</div>
 
 	<div class="n-storylines__timeline-container">
 		{{#if children.0.children}}
-			</button>
 			{{> n-storylines/templates/partials/years}}
 		{{else if children}}
-			<div class="parent-level">Years</div></button>
 			{{> n-storylines/templates/partials/months}}
 		{{else}}
-		<div class="parent-level">Months</div></button>
 			{{> n-storylines/templates/partials/single-month}}
 		{{/if}}
 	</div>

@@ -11,25 +11,23 @@
   position: absolute;
   top: 35px;
   left: -30%;
-  width: 150%;
+  width: 200%;
   z-index: -1;
 }
 
 .n-storylines__back-btn {
 	border: none;
 	background: none;
-	height: 50px;
-  margin-top: 21px;
 }
 
 .parent-level {
 	@include oTypographySansBold(s);
 	color: $buttonColor;
-	display: inline;
+	display: inline-block;
 }
 
 .n-storylines__icon  {
-	@include oIconsGetIcon('arrow-left', $buttonColor, 20);
+	@include oIconsGetIcon('arrow-left', $buttonColor, 15);
 }
 
 .n-storylines__scroll {
