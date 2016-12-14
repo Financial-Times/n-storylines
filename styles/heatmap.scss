@@ -7,6 +7,18 @@
   text-align: center;
 }
 
+.n-storylines__heatmap-segment:first-of-type {
+	@include oGridRespondTo($until: M) {
+		margin-left: 25px;
+	}
+}
+
+.n-storylines__heatmap-segment:last-of-type {
+	@include oGridRespondTo($until: M) {
+		margin-right: 20px;
+	}
+}
+
 .n-storylines__heatmap-segment-colour {
   background: oColorsGetPaletteColor('claret');
   width: 100%;

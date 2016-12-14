@@ -7,31 +7,8 @@ $o-typography-is-silent: false;
 @import 'o-icons/main';
 @import 'styles/_variables';
 
+@import 'styles/nav-info';
 @import 'styles/article-list';
 @import 'styles/timeline-container';
 @import 'styles/heatmap';
 @import 'styles/dots';
-
-.n-storylines__container {
-	margin-top: 25px;
-	border-top: 8px solid oColorsGetPaletteColor('black');
-	border-bottom: 1px solid $border;
-	@include oGridRespondTo($until: M) {
-		width: 95%;
-    margin-left: 12px;
-	}
-}
-
-.n-storylines__info {
-	@include oTypographySans(m);
-  margin: 8px 0;
-}
-
-.n-storylines__content-count {
-	color: rgba(0, 0, 0, 0.6);
-	float: left;
-	@include oTypographySansData(m)
-	@include oGridRespondTo($until: M){
-		margin-bottom: 10px;
-	}
-}
