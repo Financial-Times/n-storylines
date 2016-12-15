@@ -43,46 +43,10 @@
 		border-top: 1px solid $border;
 		top: 13px;
 		left: -50%;
-		margin-left: 50vw;
-		width: 100vw;
+		width: 500%;
 	}
 }
 
-// .n-storylines__article:nth-child(1):after {
-// 	@include oGridRespondTo(M) {
-// 		content: '';
-// 		display: block;
-// 		position: absolute;
-// 		z-index: -1;
-// 		border-top: 1px solid $border;
-// 		top: 13px;
-// 		width: 100vw;
-// 	}
-	// @include oGridRespondTo(L) {
-	// 	// 		content: '';
-	// 	// 		display: block;
-	// 	// 		position: absolute;
-	// 	// 		z-index: -1;
-	// 	// 		border-top: 1px solid $border;
-	// 	// 		top: 13px;
-	// 	// 		left: -50%;
-	// 	// 		width: 500%;
-	// }
-// }
-//
-// .n-storylines__article:nth-child(6):after {
-// 	@include oGridRespondTo(M) {
-// 		content: '';
-// 		display: block;
-// 		position: absolute;
-// 		z-index: -1;
-// 		border-top: 1px solid $border;
-// 		top: 13px;
-// 		right: 90%;
-// 		width: 100vw;
-// 	}
-// }
-//
 .n-storylines__top-content {
 	counter-reset: list;
 	position: relative;
