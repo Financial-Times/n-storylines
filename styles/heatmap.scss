@@ -1,4 +1,5 @@
 .n-storylines__heatmap-segment {
+	text-decoration: none;
 	@include oGridRespondTo($until: M) {
 		min-width: 50px;
 	}
@@ -35,6 +36,10 @@
 
 .n-storylines__heatmap-segment-colour--background {
 	background: $background;
+}
+
+.n-storylines__heatmap-segment-colour--background:hover {
+	border: 2px solid black;
 }
 
 .n-storylines__heatmap-segment-name {

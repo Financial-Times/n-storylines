@@ -2,7 +2,7 @@
 
 	<div class="n-storylines__scroll-all-months">
 	{{#each children}}
-		<div class="n-storylines__heatmap-segment">
+		<div class="n-storylines__heatmap-segment" tabindex="0">
 			<ul class="dot-container">
 				{{#if dot}}
 					{{#each dot}}
@@ -10,9 +10,15 @@
 					{{/each}}
 				{{/if}}
 			</ul>
-			<div class="n-storylines__heatmap-segment-colour--background">
-				<div class="n-storylines__heatmap-segment-colour n-storylines__all-months" style="opacity: {{weight}};"></div>
-			</div>
+				{{#ifEquals weight 0}}
+				<div class="n-storylines__heatmap-segment-none"></div>
+				{{else}}
+				<div class="n-storylines__heatmap-segment-colour--background">
+					<div class="n-storylines__heatmap-segment-colour n-storylines__all-months"
+								style="opacity: {{weight}};">
+					</div>
+				</div>
+			{{/ifEquals}}
 			<p class="n-storylines__heatmap-segment-name">{{abbreviatedName}}</p>
 		</div>
 	{{/each}}

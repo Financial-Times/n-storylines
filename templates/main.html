@@ -1,4 +1,4 @@
-<div class="n-storylines">
+<div class="n-storylines" data-o-grid-colspan="12">
 	<div class="n-storylines__info">
 		Explore articles from
 		{{#if children.0.children}}
@@ -21,7 +21,6 @@
 			{{else}}
 				Months</button>
 			{{/if}}
-		</div>
 	</div>
 
 	<div class="n-storylines__timeline-container">
@@ -43,7 +42,7 @@
 		{{/if}}
 	</div>
 
-	<ul class="n-storylines__top-content o-grid-row">
+	<ul class="n-storylines__top-content">
 		{{#each relevantArticles}}
 		<li class="n-storylines__article"  data-o-grid-colspan="12 M4 L2">
 			<a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}">{{title}}</a>
@@ -52,6 +51,7 @@
 		{{/each}}
 	</ul>
 </div>
+
 
 <script type="text/javascript">
 	 window.FT = window.FT || {};
