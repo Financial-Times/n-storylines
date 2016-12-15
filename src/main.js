@@ -4,7 +4,7 @@ function init () {
 	const initialData = window && window.FT && window.FT.storylineData;
 	if (!initialData) return;
 
-	const heatmapSegments = document.getElementsByClassName('n-storylines__heatmap-segment-colour');
+	const heatmapSegments = document.getElementsByClassName('n-storylines__heatmap-segment');
 	const backBtns = document.getElementsByClassName('n-storylines__back-btn');
 
 	setupInteraction(initialData);
@@ -16,7 +16,6 @@ function init () {
 		for (let i = 0; i < heatmapSegments.length; i++) {
 			if (data.children[i].relevantArticles.length > 0) {
 				heatmapSegments[i].addEventListener('click', () => {
-					console.log(data);
 					renderStoryline(data.children[i]);
 					setupBackBtn(data);
 				});
