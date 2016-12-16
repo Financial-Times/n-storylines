@@ -1,12 +1,6 @@
-$o-grid-is-silent: false;
-$o-typography-is-silent: false;
+@import 'n-ui/env';
 
-@import 'o-typography/main';
-@import 'o-grid/main';
-@import 'o-colors/main';
-@import 'o-icons/main';
 @import 'styles/_variables';
-
 @import 'styles/nav-info';
 @import 'styles/article-list';
 @import 'styles/timeline-container';

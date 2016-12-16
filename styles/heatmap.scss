@@ -27,6 +27,10 @@
   display: flex;
 }
 
+.n-storylines__heatmap-segment-colour:hover {
+	width: 105%;
+}
+
 .n-storylines__heatmap-segment-none {
 	background: none;
 	width: 100%;
@@ -36,10 +40,6 @@
 
 .n-storylines__heatmap-segment-colour--background {
 	background: $background;
-}
-
-.n-storylines__heatmap-segment-colour--background:hover {
-	border: 2px solid black;
 }
 
 .n-storylines__heatmap-segment-name {
