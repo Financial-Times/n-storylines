@@ -34,6 +34,17 @@
 	}
 }
 
+.n-storylines__article:nth-last-child(n+2)::after {
+	@include oGridRespondTo($until: M) {
+  	content: '';
+  	position: absolute;
+		border-left: 1px solid $border;
+		height: 100%;
+		left: 17px;
+		margin: 0 auto;
+	}
+}
+
 .n-storylines__article:nth-of-type(3n+1):after {
 	@include oGridRespondTo(M) {
 		content: '';
@@ -49,7 +60,6 @@
 
 .n-storylines__top-content {
 	counter-reset: list;
-	position: relative;
 	margin: 0 auto;
 
 	@include oGridRespondTo(M) {
@@ -59,17 +69,18 @@
 	}
 }
 
-.n-storylines__top-content::before {
-	@include oGridRespondTo($until: M) {
-  	content: '';
-  	position: absolute;
-		border-left: 1px solid $border;
-		top: 5px;
-		bottom: 56px;
-		left: 17px;
-		margin: 0 auto;
-	}
-}
+// .n-storylines__top-content::before {
+// 	@include oGridRespondTo($until: M) {
+//   	content: '';
+//   	position: absolute;
+// 		border-left: 1px solid $border;
+// 		top: 34.5%;
+// 		bottom: 10%;
+// 		left: 17px;
+// 		margin: 0 auto;
+// 	}
+// }
+
 
 .n-storyline-timestamp {
 	@include oTypographySansData(m);
