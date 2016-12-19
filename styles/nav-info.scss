@@ -3,6 +3,8 @@
 	margin-top: 25px;
 	border-top: 8px solid oColorsGetPaletteColor('black');
 	border-bottom: 1px solid $border;
+	padding: 0;
+
 	@include oGridRespondTo($until: M) {
 		width: 95%;
     margin-left: 12px;
@@ -10,7 +12,7 @@
 }
 
 .n-storylines {
-	padding: 0px 16px 0 0;
+	padding: 0;
 }
 
 .n-storylines__info {
