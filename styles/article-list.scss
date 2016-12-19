@@ -35,26 +35,43 @@
 }
 
 .n-storylines__article:nth-last-child(n+2)::after {
+	content: '';
+	position: absolute;
+	margin: 0 auto;
+
+	// vertical rule - mobile
 	@include oGridRespondTo($until: M) {
-  	content: '';
-  	position: absolute;
-		border-left: 1px solid $border;
-		height: 100%;
-		left: 17px;
-		margin: 0 auto;
+    border-left: 1px solid $border;
+    height: 100%;
+    left: -23px;
+    top: 27px;
+	}
+
+	// horizontal rule - general
+	@include oGridRespondTo(M) {
+		border-top: 1px solid $border;
+		top: 13px;
+		right: -41px;
+		width: 100%;
 	}
 }
 
-.n-storylines__article:nth-of-type(3n+1):after {
-	@include oGridRespondTo(M) {
-		content: '';
-		display: block;
-		position: absolute;
-		z-index: -1;
+//horizontal rule for tablet
+.n-storylines__article:nth-child(3):after {
+	@include oGridRespondTo(M, $until: L) {
 		border-top: 1px solid $border;
-		top: 13px;
-		left: -50%;
-		width: 500%;
+		left: 41px;
+		width: 100vw;
+	}
+}
+
+//horizontal rule for tablet
+.n-storylines__article:nth-child(4):after {
+	@include oGridRespondTo(M, $until: L) {
+		border-top: 1px solid $border;
+		right: -16px;
+		width: 100vw;
+		z-index: -1;
 	}
 }
 
@@ -68,19 +85,6 @@
 		padding: 0;
 	}
 }
-
-// .n-storylines__top-content::before {
-// 	@include oGridRespondTo($until: M) {
-//   	content: '';
-//   	position: absolute;
-// 		border-left: 1px solid $border;
-// 		top: 34.5%;
-// 		bottom: 10%;
-// 		left: 17px;
-// 		margin: 0 auto;
-// 	}
-// }
-
 
 .n-storyline-timestamp {
 	@include oTypographySansData(m);
