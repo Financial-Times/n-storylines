@@ -1,4 +1,4 @@
-<div class="n-storylines" data-o-grid-colspan="12">
+<div class="n-storylines" data-o-grid-colspan="12" data-trackable="storyline">
 	<div class="n-storylines__info">
 		Explore articles from
 		{{#if children.0.children}}
@@ -13,7 +13,7 @@
 			{{total}} articles published
 		</div>
 
-		<button class="n-storylines__back-btn o-buttons o-buttons--uncolored o-buttons--small o-buttons-icon o-buttons-icon--arrow-left">
+		<button class="n-storylines__back-btn o-buttons o-buttons--uncolored o-buttons--small o-buttons-icon o-buttons-icon--arrow-left" data-trackable="navigation">
 			{{#if children.0.children}}
 				</button>
 			{{else if children}}
@@ -23,7 +23,7 @@
 			{{/if}}
 	</div>
 
-	<div class="n-storylines__timeline-container">
+	<div class="n-storylines__timeline-container" data-trackable="visual-timeline">
 		{{#if children.0.children}}
 			{{> n-storylines/templates/partials/years}}
 		{{else if children}}
@@ -42,10 +42,10 @@
 		{{/if}}
 	</div>
 
-	<ul class="n-storylines__top-content">
+	<ul class="n-storylines__top-content" data-trackable="top-content">
 		{{#each relevantArticles}}
 		<li class="n-storylines__article"  data-o-grid-colspan="12 M4 L2">
-			<a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}">{{title}}</a>
+			<a class="n-storylines__article-link" href="https://www.ft.com/content/{{id}}" data-trackable="main-link">{{title}}</a>
 			<p class="n-storyline-timestamp">{{timestamp}}</p>
 		</li>
 		{{/each}}
