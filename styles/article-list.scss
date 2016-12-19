@@ -11,23 +11,21 @@
 }
 
 .n-storylines__article::before {
-  counter-increment: list;
-  content: counter(list);
-  font: 14px/15px MetricWeb, sans-serif;
-  color: $background;
+	counter-increment: list;
+	content: counter(list);
+	font: 14px/15px MetricWeb, sans-serif;
+	color: $background;
 	text-align: center;
-  background-color: $filler;
-  border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  padding: 5px;
-
+	background-color: $filler;
+	border-radius: 100%;
+	height: 15px;
+	width: 15px;
+	padding: 5px;
 	@include oGridRespondTo($until: M) {
 		position: absolute;
 		left: -35px;
 		top: 2px;
 	};
-
 	@include oGridRespondTo(M) {
 		display: block;
 		margin-bottom: 5px;
@@ -38,15 +36,13 @@
 	content: '';
 	position: absolute;
 	margin: 0 auto;
-
 	// vertical rule - mobile
 	@include oGridRespondTo($until: M) {
-    border-left: 1px solid $border;
-    height: 100%;
-    left: -23px;
-    top: 27px;
+		border-left: 1px solid $border;
+		height: 100%;
+		left: -23px;
+		top: 27px;
 	}
-
 	// horizontal rule - general
 	@include oGridRespondTo(M) {
 		border-top: 1px solid $border;
@@ -55,7 +51,6 @@
 		width: 100%;
 	}
 }
-
 //horizontal rule for tablet
 .n-storylines__article:nth-child(3):after {
 	@include oGridRespondTo(M, $until: L) {
@@ -64,7 +59,6 @@
 		width: 100vw;
 	}
 }
-
 //horizontal rule for tablet
 .n-storylines__article:nth-child(4):after {
 	@include oGridRespondTo(M, $until: L) {
@@ -78,7 +72,6 @@
 .n-storylines__top-content {
 	counter-reset: list;
 	margin: 0 auto;
-
 	@include oGridRespondTo(M) {
 		margin: 10px 0 0 -13px;
 		width: 100%;
@@ -94,12 +87,12 @@
 
 .n-storylines__article-link {
 	@include oTypographySerifDisplay(m);
-  color: $filler;
+	color: $filler;
 	text-decoration: none;
 	border-bottom: none;
 }
 
 .n-storylines__article-link:focus {
-  cursor: pointer;
-  color: oColorsGetPaletteColor('grey-tint3');
+	cursor: pointer;
+	color: oColorsGetPaletteColor('grey-tint3');
 }

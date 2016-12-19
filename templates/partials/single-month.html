@@ -1,14 +1,11 @@
 <div class="n-storylines__heatmap-segment">
 	<div class="n-storylines__heatmap-segment-colour--background">
 		<ul class="dot-container">
-			{{#if dayDot}}
-				{{#each dayDot}}
-				<li class='dot' style="margin-left: {{position}}%">{{name}}</li>
-				{{/each}}
-			{{/if}}
+			{{#if dayDot}} {{#each dayDot}}
+			<li class='dot' style="margin-left: {{position}}%">{{name}}</li>
+			{{/each}} {{/if}}
 		</ul>
-		<div class="n-storylines__heatmap-segment-colour"
-					style="opacity: {{weight}};">
+		<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};">
 		</div>
 	</div>
 	<p class="n-storylines__heatmap-segment-name">{{name}}</p>

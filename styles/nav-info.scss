@@ -5,17 +5,17 @@
 	border-bottom: 1px solid $border;
 	@include oGridRespondTo($until: M) {
 		width: 95%;
-    margin-left: 12px;
+		margin-left: 12px;
 	}
 }
 
 .n-storylines {
-	padding: 0px 16px 0 0;
+	padding: 0 16px 0 0;
 }
 
 .n-storylines__info {
 	@include oTypographySans(m);
-  margin: 8px 0;
+	margin: 8px 0;
 }
 
 .n-storylines__nav {
@@ -25,8 +25,7 @@
 .n-storylines__content-count {
 	color: rgba(0, 0, 0, 0.6);
 	float: right;
-	@include oTypographySansData(m)
-	@include oGridRespondTo($until: M){
+	@include oTypographySansData(m) @include oGridRespondTo($until: M) {
 		margin-bottom: 10px;
 	}
 }
