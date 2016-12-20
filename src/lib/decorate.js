@@ -1,13 +1,13 @@
 const addDots = require('./dotPosition');
 const addAbbreviations = require('./abbreviate');
 const addTimestamps = require('./timestamps');
-const addEditorialPicks = require('./editorial-lists');
+const addKeyDevelopments = require('./editorial-lists');
 
-module.exports = function decorate (data, listedArticles) {
-	const decoratedData = addTimestamps(addAbbreviations(addDots(data)));
-	if (!listedArticles.length) {
-		return decoratedData;
+module.exports = function decorate (data, keyDevelopments) {
+	if (keyDevelopments.length) {
+		const dataWithKeyDevelopements = addKeyDevelopments(data, keyDevelopments);
+		return addTimestamps(addAbbreviations(addDots(dataWithKeyDevelopements)));
 	} else {
-		return addEditorialPicks(decoratedData, listedArticles);
+		return addTimestamps(addAbbreviations(addDots(data)));
 	}
 };
