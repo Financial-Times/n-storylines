@@ -1,6 +1,6 @@
 .n-storylines__container {
 	width: 100%;
-	margin-top: 25px;
+	margin: 25px 0 0 15px;
 	border-top: 8px solid oColorsGetPaletteColor('black');
 	border-bottom: 1px solid $border;
 	@include oGridRespondTo($until: M) {
@@ -10,7 +10,7 @@
 }
 
 .n-storylines {
-	padding: 0 16px 0 0;
+	padding: 0;
 }
 
 .n-storylines__info {
