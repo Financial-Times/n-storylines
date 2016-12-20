@@ -1,18 +1,28 @@
 function addTimeProperties (article) {
 	const publishedDate = new Date(article.publishedDate);
 	const day = publishedDate.getDate(),
-		  month = publishedDate.getMonth(),
-		  year = publishedDate.getFullYear();
+		month = publishedDate.getMonth(),
+		year = publishedDate.getFullYear();
 	return Object.assign({}, article, { day, month, year });
 };
 
-const isInTimeUnit = (article, timeUnit) => article.year === timeUnit || article.month === timeUnit;
+const isInTimeUnit = (article, timeUnit) => {
+	switch (timeUnit.type) {
+		case 'year':
+			return article.year === timeUnit.name;
+		case 'month':
+			const monthNumber = new Date(Date.parse(`${timeUnit.name} 1, 1970`)).getMonth();
+			return article.month === monthNumber;
+		default:
+			return false;
+	}
+};
 
-function addKeyDevelopments (articles, keyDevelopments, timeUnit=false) {
+function addKeyDevelopments ({ originalArticles, keyDevelopments, timeUnit }) {
 	const replacements = keyDevelopments.map(addTimeProperties)
 		  .filter(article => timeUnit ? isInTimeUnit(article, timeUnit) : true);
 
-	return articles.slice(0) // clone
+	return originalArticles.slice(0) // clone
 		.sort((a, b) => a.weight - b.weight) // sort by ascending weight
 		.slice(replacements.length) // remove non-editorial picks
 		.concat(replacements) // add editorial picks
@@ -21,24 +31,24 @@ function addKeyDevelopments (articles, keyDevelopments, timeUnit=false) {
 
 module.exports = (originalContent, keyDevelopments) => {
 	const allUpdates = {};
-	allUpdates.relevantArticles = addKeyDevelopments(
-		originalContent.relevantArticles,
+	allUpdates.relevantArticles = addKeyDevelopments({
+		originalArticles: originalContent.relevantArticles,
 		keyDevelopments
-	);
+	});
 	allUpdates.children = originalContent.children.map(originalYear => {
 		const yearUpdates = {};
-		yearUpdates.relevantArticles = addKeyDevelopments(
-			originalYear.relevantArticles,
+		yearUpdates.relevantArticles = addKeyDevelopments({
+			originalArticles: originalYear.relevantArticles,
 			keyDevelopments,
-			originalYear.name
-		);
+			timeUnit: { type: 'year', name: originalYear.name }
+		});
 		yearUpdates.children = originalYear.children.map(originalMonth => {
 			const monthUpdates = {};
-			monthUpdates.relevantArticles = addKeyDevelopments(
-				originalMonth.relevantArticles,
+			monthUpdates.relevantArticles = addKeyDevelopments({
+				originalArticles: originalMonth.relevantArticles,
 				keyDevelopments,
-				originalMonth.name
-			);
+				timeUnit: { type: 'month', name: originalMonth.name }
+			});
 			return Object.assign({}, originalMonth, monthUpdates);
 		});
 		return Object.assign({}, originalYear, yearUpdates);
