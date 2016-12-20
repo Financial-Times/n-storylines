@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const addEditorialPicks = require('../../../src/lib/editorial-lists');
+const addEditorialPicks = require('../../../src/lib/key-developments');
 
 describe('decorating storyline data with editiorial picks', () => {
 

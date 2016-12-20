@@ -1,3 +1,5 @@
+const monthNumber = monthName => new Date(Date.parse(`${monthName} 1, 1970`)).getMonth();
+
 function addTimeProperties (article) {
 	const publishedDate = new Date(article.publishedDate);
 	const day = publishedDate.getDate(),
@@ -6,23 +8,24 @@ function addTimeProperties (article) {
 	return Object.assign({}, article, { day, month, year });
 };
 
-const isInTimeUnit = (article, timeUnit) => {
+function isInTimeUnit (article, timeUnit) {
 	switch (timeUnit.type) {
 		case 'year':
 			return article.year === timeUnit.name;
 		case 'month':
-			const monthNumber = new Date(Date.parse(`${timeUnit.name} 1, 1970`)).getMonth();
-			return article.month === monthNumber;
+			return article.month === monthNumber(timeUnit.name);
 		default:
 			return false;
 	}
 };
 
 function addKeyDevelopments ({ originalArticles, keyDevelopments, timeUnit }) {
-	const replacements = keyDevelopments.map(addTimeProperties)
+	const replacements = keyDevelopments
+		  .map(addTimeProperties)
 		  .filter(article => timeUnit ? isInTimeUnit(article, timeUnit) : true);
 
-	return originalArticles.slice(0) // clone
+	return originalArticles
+		.slice(0) // clone
 		.sort((a, b) => a.weight - b.weight) // sort by ascending weight
 		.slice(replacements.length) // remove non-editorial picks
 		.concat(replacements) // add editorial picks
