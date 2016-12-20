@@ -1,31 +1,47 @@
-module.exports = function addEditorialPicks (content, listedArticles) {
+function addTimeProperties (article) {
+	const publishedDate = new Date(article.publishedDate);
+	const day = publishedDate.getDate(),
+		  month = publishedDate.getMonth(),
+		  year = publishedDate.getFullYear();
+	return Object.assign({}, article, { day, month, year });
+};
 
-	const work = x => {
+const isInTimeUnit = (article, timeUnit) => article.year === timeUnit || article.month === timeUnit;
 
-		const replacements = listedArticles
-			  .filter(article => article.year === x.name || article.month === x.name);
+function addKeyDevelopments (articles, keyDevelopments, timeUnit=false) {
+	const replacements = keyDevelopments.map(addTimeProperties)
+		  .filter(article => timeUnit ? isInTimeUnit(article, timeUnit) : true);
 
-		const newRelevantArticles = x.relevantArticles.slice(0) // clone
-			.sort((a, b) => a.weight - b.weight) // sort by ascending weight
-			.slice(0, replacements.length) // remove non-editorial picks
-			.concat(replacements) // add editorial picks
-			.sort((a, b) => {
-				// re-sort by time
-				return a.year - b.year || a.month - b.month || a.day - b.day;
-			});
+	return articles.slice(0) // clone
+		.sort((a, b) => a.weight - b.weight) // sort by ascending weight
+		.slice(replacements.length) // remove non-editorial picks
+		.concat(replacements) // add editorial picks
+		.sort((a, b) =>  a.year - b.year || a.month - b.month || a.day - b.day); // sort by time
+};
 
-		x.relevantArticles = newRelevantArticles;
-
-	};
-
-	work(content);
-
-	content.children.forEach(work);
-
-	content.children.forEach(child => {
-		child.children.forEach(work);
+module.exports = (originalContent, keyDevelopments) => {
+	const allUpdates = {};
+	allUpdates.relevantArticles = addKeyDevelopments(
+		originalContent.relevantArticles,
+		keyDevelopments
+	);
+	allUpdates.children = originalContent.children.map(originalYear => {
+		const yearUpdates = {};
+		yearUpdates.relevantArticles = addKeyDevelopments(
+			originalYear.relevantArticles,
+			keyDevelopments,
+			originalYear.name
+		);
+		yearUpdates.children = originalYear.children.map(originalMonth => {
+			const monthUpdates = {};
+			monthUpdates.relevantArticles = addKeyDevelopments(
+				originalMonth.relevantArticles,
+				keyDevelopments,
+				originalMonth.name
+			);
+			return Object.assign({}, originalMonth, monthUpdates);
+		});
+		return Object.assign({}, originalYear, yearUpdates);
 	});
-
-	return content;
-
+	return Object.assign({}, originalContent, allUpdates);
 };
