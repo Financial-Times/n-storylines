@@ -1,8 +1,9 @@
 .n-storylines__article-header {
 	color: $opaque;
+	margin-top: 10px;
 	@include oTypographySansData(m);
 	@include oGridRespondTo($until: M) {
-		margin-bottom: 10px;
+		margin: 0 0 10px 0;
 	}
 }
 
