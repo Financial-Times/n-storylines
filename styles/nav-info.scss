@@ -29,7 +29,8 @@
 .n-storylines__content-count {
 	color: rgba(0, 0, 0, 0.6);
 	float: right;
-	@include oTypographySansData(m) @include oGridRespondTo($until: M) {
+	@include oTypographySansData(m) 
+	@include oGridRespondTo($until: M) {
 		margin-bottom: 10px;
 	}
 }

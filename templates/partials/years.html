@@ -1,22 +1,17 @@
-<div class="n-storylines__scroll-container">
-
-	<div class="n-storylines__scroll-segments">
-	{{#each children}}
-		<div class="n-storylines__heatmap-segment" data-trackable="year-segment" tabindex="0">
-			<ul class="dot-container">
-				{{#if dot}}
-					{{#each dot}}
-					<li class='dot' style='margin-left: {{position}}%'>{{name}}</li>
-					{{/each}}
-				{{/if}}
-			</ul>
-			<div class="n-storylines__heatmap-segment-colour--background">
-				<div class="n-storylines__heatmap-segment-colour"
-							style="opacity: {{weight}};">
-				</div>
-			</div>
-			<p class="n-storylines__heatmap-segment-name">{{name}}</p>
+{{#each children}}
+<div class="n-storylines__heatmap-segment" data-trackable="year-segment" tabindex="0">
+	<ul class="dot-container">
+		{{#if dot}} {{#each dot}}
+		<li class='dot' style='margin-left: {{position}}%'>{{name}}</li>
+		{{/each}} {{/if}}
+	</ul>
+	<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all">
+		<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
+		<div class="n-storylines__summary">
+			<span class="n-storylines__bold">Explore {{name}}</span>
+			<p>{{total}} articles published</p>
 		</div>
-	{{/each}}
 	</div>
+	<p class="n-storylines__heatmap-segment-name">{{name}}</p>
 </div>
+{{/each}}
