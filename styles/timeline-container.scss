@@ -22,7 +22,7 @@
 	width: 100%;
 }
 
-.n-storylines__scroll-all-months {
+.n-storylines__scroll-segments {
 	display: flex;
 	@include oGridRespondTo($until: M) {
 		position: absolute;
