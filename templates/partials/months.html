@@ -11,9 +11,13 @@
 			<div class="n-storylines__heatmap-segment-none"></div>
 			{{else}}
 			<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all">
-				<div class="n-storylines__heatmap-segment-colour n-storylines__all-months" style="opacity: {{weight}};">
-				</div>
+				<div class="n-storylines__heatmap-segment-colour n-storylines__all-months" style="opacity: {{weight}};"></div>
 			</div>
+			<div class="n-storylines__summary">
+				<span class="n-storylines__bold">Explore {{name}}</span>
+				<p>{{total}} articles published</p>
+			</div>
+
 			{{/ifEquals}}
 			<p class="n-storylines__heatmap-segment-name">{{abbreviatedName}}</p>
 		</div>
