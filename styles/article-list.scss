@@ -34,6 +34,13 @@
 		}
 	}
 
+	// covers varying line numbers for article titles in tablet
+		@include oGridRespondTo(M, $until: L) {
+			&:nth-child(4) {
+				clear: left;
+			}
+		}
+
 	// lines across all viewports
 	&::after {
 		content: '';
