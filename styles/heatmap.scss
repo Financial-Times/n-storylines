@@ -29,7 +29,7 @@
 .n-storylines__summary {
 	display: none;
   text-align: left;
-	position:absolute;
+	position: absolute;
 	top: 70px;
   width: 85px;
 	padding: 8px 5px 0;
@@ -53,7 +53,7 @@
 			border: 1px solid;
 			cursor: pointer;
 			> .n-storylines__summary {
-				display: block;
+				display: inline-block;
 			}
 		}
 	}
@@ -65,6 +65,7 @@
 	color: $opaque;
 	position: relative;
 	margin: 10px 0 5px;
+	z-index: -1;
 	@include oGridRespondTo($until: M) {
 		&::before {
 			counter-increment: dot;
