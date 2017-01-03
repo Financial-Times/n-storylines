@@ -8,11 +8,11 @@ function addTimeProperties (article) {
 
 function addKeyDevelopments ({ originalArticles, keyDevelopments, timeUnit }) {
 	const replacements = keyDevelopments
-		  .map(addTimeProperties)
-		  .filter(article => {
-			  if (!timeUnit) return true;
-			  return article.year === timeUnit.name || article.month === timeUnit.name;
-		  });
+			.map(addTimeProperties)
+			.filter(article => {
+				if (!timeUnit) return true;
+				return article.year === timeUnit.name || article.month === timeUnit.name;
+			});
 
 	const replacementsIds = replacements.map(article => article.id);
 
