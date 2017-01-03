@@ -8,17 +8,34 @@ describe('decorating storyline data with editiorial picks', () => {
 		it('should update relevant articles and respect content\'s weight', () => {
 			const result = addEditorialPicks({
 				relevantArticles: [
-					{title: 'bantamweight', weight: 0.02},
-					{title: 'middleweight', weight: 0.27},
-					{title: 'heavyweight', weight: 0.59}
+					{id: 1, title: 'bantamweight', weight: 0.02},
+					{id: 2, title: 'middleweight', weight: 0.27},
+					{id: 3, title: 'heavyweight', weight: 0.59}
 				],
 				children: []
-			}, [{title: 'pick one'}, {title: 'pick two'}]);
+			}, [{id: 4, title: 'pick one'}, {id: 5, title: 'pick two'}]);
 
 			expect(
 				result.relevantArticles.map(artcl => artcl.title)
 			).eql(
 				['heavyweight', 'pick one', 'pick two']
+			);
+		});
+
+		it('should dedupe content that is on the list and in the most popular', () => {
+			const result = addEditorialPicks({
+				relevantArticles: [
+					{id: 1, title: 'bantamweight', weight: 0.02},
+					{id: 2, title: 'middleweight', weight: 0.27},
+					{id: 3, title: 'heavyweight', weight: 0.59}
+				],
+				children: []
+			}, [{id: 1, title: 'bantamweight'}, {id: 5, title: 'pick two'}]);
+
+			expect(
+				result.relevantArticles.map(artcl => artcl.title)
+			).eql(
+				['heavyweight', 'bantamweight', 'pick two']
 			);
 		});
 
@@ -34,13 +51,13 @@ describe('decorating storyline data with editiorial picks', () => {
 						name: 2016,
 						children: [],
 						relevantArticles: [
-							{title: 'bantamweight', weight: 0.02 },
-							{title: 'middleweight', weight: 0.27 },
-							{title: 'heavyweight', weight: 0.59, month: 11 }
+							{id: 1, title: 'bantamweight', weight: 0.02 },
+							{id: 2, title: 'middleweight', weight: 0.27 },
+							{id: 3, title: 'heavyweight', weight: 0.59, month: 11 }
 						]
 					}
 				]
-			}, [{ title: 'pick one', publishedDate: new Date(2016, 3) }, { title: 'pick two', publishedDate: new Date(2016, 0) }]);
+			}, [{ id: 4, title: 'pick one', publishedDate: new Date(2016, 3) }, { id: 5, title: 'pick two', publishedDate: new Date(2016, 0) }]);
 
 			expect(
 				result.children[0].relevantArticles.map(artcl => artcl.title)
@@ -62,15 +79,15 @@ describe('decorating storyline data with editiorial picks', () => {
 						children: [{
 							name: 'January',
 							relevantArticles: [
-								{title: 'bantamweight', weight: 0.02, month: 0},
-								{title: 'middleweight', weight: 0.27, month: 0},
-								{title: 'heavyweight', weight: 0.59, month: 0}
+								{id: 1, title: 'bantamweight', weight: 0.02, month: 0},
+								{id: 2, title: 'middleweight', weight: 0.27, month: 0},
+								{id: 3, title: 'heavyweight', weight: 0.59, month: 0}
 							]
 						}],
 						relevantArticles: []
 					}
 				]
-			}, [{ title: 'pick one', publishedDate: new Date(2016, 0) }, { title: 'pick two', publishedDate: new Date(2016, 0) }]);
+			}, [{ id: 4, title: 'pick one', publishedDate: new Date(2016, 0) }, { id: 5, title: 'pick two', publishedDate: new Date(2016, 0) }]);
 
 			expect(
 				result.children[0].children[0].relevantArticles.map(artcl => artcl.title)
