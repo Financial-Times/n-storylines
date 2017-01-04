@@ -8,17 +8,20 @@ function addTimeProperties (article) {
 
 function addKeyDevelopments ({ originalArticles, keyDevelopments, timeUnit }) {
 	const replacements = keyDevelopments
-		  .map(addTimeProperties)
-		  .filter(article => {
-			  if (!timeUnit) return true;
-			  return article.year === timeUnit.name || article.month === timeUnit.name;
-		  });
+			.map(addTimeProperties)
+			.filter(article => {
+				if (!timeUnit) return true;
+				return article.year === timeUnit.name || article.month === timeUnit.name;
+			});
+
+	const replacementsIds = replacements.map(article => article.id);
 
 	return originalArticles
 		.slice(0) // clone
+		.filter(article => replacementsIds.indexOf(article.id) === -1)
 		.sort((a, b) => a.weight - b.weight) // sort by ascending weight
-		.slice(replacements.length) // remove non-editorial picks
 		.concat(replacements) // add editorial picks
+		.slice(0 - originalArticles.length) // remove non-editorial picks
 		.sort((a, b) =>  a.year - b.year || a.month - b.month || a.day - b.day); // sort by time
 };
 
