@@ -1,8 +1,8 @@
 function addTimeProperties (article) {
 	const publishedDate = new Date(article.publishedDate);
-	const day = publishedDate.getDate(),
-		month = publishedDate.getMonth(),
-		year = publishedDate.getFullYear();
+	const day = publishedDate.getUTCDate(),
+		month = publishedDate.getUTCMonth(),
+		year = publishedDate.getUTCFullYear();
 	return Object.assign({}, article, { day, month, year });
 };
 
