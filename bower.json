@@ -4,6 +4,6 @@
   "description": "",
   "main": "",
   "dependencies": {
-    "n-ui": "^2.62.7"
+    "n-ui": ">=2.0.0 <4.0.0"
   }
 }
