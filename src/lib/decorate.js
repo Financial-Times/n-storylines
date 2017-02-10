@@ -1,9 +1,7 @@
 const addDots = require('./dotPosition');
 const addAbbreviations = require('./abbreviate');
 const addTimestamps = require('./timestamps');
-const addKeyDevelopments = require('./key-developments');
 
-module.exports = function decorate (data, keyDevelopments) {
-	if (keyDevelopments.length) addKeyDevelopments(data, keyDevelopments);
+module.exports = function decorate (data) {
 	return addTimestamps(addAbbreviations(addDots(data)));
 };
