@@ -46,6 +46,7 @@
 		content: '';
 		border: 0 solid $border;
 		position: absolute;
+		z-index: -1;
 		// vertical rule - mobile
 		@include oGridRespondTo($until: M) {
 			border-left-width: 1px;
@@ -78,7 +79,7 @@
 
 		//horizontal rule, stetched beyond viewport to the left
 		&:nth-child(4)::after {
-			right: -16px;
+			right: -20px;
 			width: 100vw;
 			z-index: -1;
 		}
