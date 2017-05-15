@@ -1,9 +1,6 @@
 const template = require('../templates/main.html');
 
 function init () {
-
-	console.log('******************* inited')
-
 	const initialData = window && window.FT && window.FT.storylineData;
 	if (!initialData) return;
 
