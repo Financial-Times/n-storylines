@@ -22,7 +22,10 @@ expect to be available when a page uses n-ui
 	* in all browsers (opinionated).
 	*/a:active,
 a:hover {
-  outline-width: 0;
+  outline-width: 0 !important;
+}a:focus {
+  outline: 3px solid #26747a;
+  outline-offset: 3px;
 }/* Text-level semantics
 		=====================================================================*//**
 	* 1. Remove the bottom border in Firefox 39-.
@@ -136,6 +139,7 @@ input::-moz-focus-inner {
 }/* Next specific stuff
 		=====================================================================*//**
 	* Standardise outline styles
+	* This will be phased out...
 	*/:focus {
   outline: thin dotted;
   outline-offset: 1px;
@@ -148,15 +152,15 @@ input::-moz-focus-inner {
   }
 }@media (min-width: 46.25em) {
   html:after {
-    content: '{ "layout": "M", "gutter": "16px" }';
+    content: '{ "layout": "M", "gutter": "20px" }';
   }
 }@media (min-width: 61.25em) {
   html:after {
-    content: '{ "layout": "L", "gutter": "16px" }';
+    content: '{ "layout": "L", "gutter": "20px" }';
   }
 }@media (min-width: 76.25em) {
   html:after {
-    content: '{ "layout": "XL", "gutter": "16px" }';
+    content: '{ "layout": "XL", "gutter": "20px" }';
   }
 }.o-grid-container {
   position: relative;
@@ -173,8 +177,8 @@ input::-moz-focus-inner {
   padding-right: 10px;
 }@media (min-width: 46.25em) {
   .o-grid-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }@media (min-width: 46.25em) {
   .o-grid-container {
@@ -207,7 +211,7 @@ input::-moz-focus-inner {
   }
 }@media (min-width: 46.25em) {
   .o-grid-row {
-    margin-left: -16px;
+    margin-left: -20px;
   }
 }.o-grid-row:before, .o-grid-row:after {
   content: '';
@@ -228,7 +232,7 @@ input::-moz-focus-inner {
   padding-left: 10px;
 }@media (min-width: 46.25em) {
   [data-o-grid-colspan] {
-    padding-left: 16px;
+    padding-left: 20px;
   }
 }[data-o-grid-colspan~="0"], [data-o-grid-colspan~="hide"] {
   display: none;
@@ -785,22 +789,22 @@ input::-moz-focus-inner {
   margin-right: auto;
   float: none;
 }@font-face {
-  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/FinancierDisplayWeb-Regular.woff?#iefix") format("woff");
+  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/FinancierDisplayWeb-Regular.woff");
   font-family: FinancierDisplayWeb;
   font-weight: 400;
   font-style: normal;
 }@font-face {
-  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/FinancierDisplayWeb-Bold.woff?#iefix") format("woff");
+  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/FinancierDisplayWeb-Bold.woff");
   font-family: FinancierDisplayWeb;
   font-weight: 700;
   font-style: normal;
 }@font-face {
-  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/MetricWeb-Regular.woff?#iefix") format("woff");
+  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/MetricWeb-Regular.woff");
   font-family: MetricWeb;
   font-weight: 400;
   font-style: normal;
 }@font-face {
-  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/MetricWeb-Semibold.woff?#iefix") format("woff");
+  src: url("https://www.ft.com/__origami/service/build/v2/files/o-fonts-assets@1.3.0/MetricWeb-Semibold.woff");
   font-family: MetricWeb;
   font-weight: 600;
   font-style: normal;
@@ -817,7 +821,7 @@ input::-moz-focus-inner {
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1px dotted #26747a;
-}.o-hoverable-on a:hover, a:focus {
+}a:hover, a:focus {
   color: #505050;
   border-bottom-color: transparent;
 }.n-util-clearfix {
@@ -863,6 +867,12 @@ input::-moz-focus-inner {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
+}.has-tabbed a:focus,
+.has-tabbed button:focus,
+.has-tabbed input:focus,
+.has-tabbed select:focus {
+  -webkit-box-shadow: 0 0 0 4px #9e2f50 !important;
+          box-shadow: 0 0 0 4px #9e2f50 !important;
 }.core .n-storylines__container {
   display: none;
 }.n-storylines__container {
@@ -954,6 +964,7 @@ input::-moz-focus-inner {
   content: '';
   border: 0 solid #cec6b9;
   position: absolute;
+  z-index: -1;
 }@media (max-width: 46.24em) {
   .n-storylines__article::after {
     border-left-width: 1px;
@@ -979,7 +990,7 @@ input::-moz-focus-inner {
     width: 100vw;
   }
   .n-storylines__article:nth-child(4)::after {
-    right: -16px;
+    right: -20px;
     width: 100vw;
     z-index: -1;
   }
@@ -1097,11 +1108,11 @@ input::-moz-focus-inner {
   border: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}.n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:hover {
+}.n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:hover, .n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:focus {
   border: 1px solid;
   cursor: pointer;
 }@media (min-width: 46.25em) {
-  .n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:hover + .n-storylines__summary {
+  .n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:hover + .n-storylines__summary, .n-storylines__heatmap-segment-colour--background.n-storylines__heatmap-segment--all:focus + .n-storylines__summary {
     display: inline-block;
   }
 }.n-storylines__heatmap-segment-name {

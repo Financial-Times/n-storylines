@@ -1,5 +1,5 @@
 node_modules
 bower_components
-demos/public
+demos/public/*
 .editorconfig
 dist

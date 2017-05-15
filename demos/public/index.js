@@ -42,22 +42,22 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	const main = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../main\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	const template = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../templates/main.html\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	const decorate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../lib/decorate\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	// const main = require('../src/main');
+	// const template = require('../templates/main.html');
+	// const decorate = require('../src/lib/decorate');
 	
-	fetch('./N2FkZjRhMWUtZDZjNS00ZTQ0LTg1MTMtMjYyYzBlODkzYTQ2-UE4=.json')
-		.then(res => res.json())
-		.then(data => {
-			const initialData = decorate(data);
-			document.body.innerHTML = template(initialData);
-			window.FT = { storylineData: initialData };
-			main.init();
-		});
+	// fetch('./N2FkZjRhMWUtZDZjNS00ZTQ0LTg1MTMtMjYyYzBlODkzYTQ2-UE4=.json')
+	// 	.then(res => res.json())
+	// 	.then(data => {
+	// 		const initialData = decorate(data);
+	// 		document.body.innerHTML = template(initialData);
+	// 		window.FT = { storylineData: initialData };
+	// 		main.init();
+	// 	});
 
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=index.js.map

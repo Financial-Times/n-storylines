@@ -1,6 +1,9 @@
 const template = require('../templates/main.html');
 
 function init () {
+
+	console.log('******************* inited')
+
 	const initialData = window && window.FT && window.FT.storylineData;
 	if (!initialData) return;
 
@@ -18,6 +21,13 @@ function init () {
 				heatmapSegments[i].addEventListener('click', () => {
 					renderStoryline(data.children[i]);
 					setupBackBtn(data);
+				});
+				heatmapSegments[i].addEventListener('keyup', (e) => {
+					// spacebar or enter triggers event too
+					if (e.keyCode === 13 || e.keyCode === 23) {
+						renderStoryline(data.children[i]);
+						setupBackBtn(data);
+					}
 				});
 			} else {
 				let heatmapSegmentsNames = document.querySelectorAll('.n-storylines__heatmap-segment-name');
