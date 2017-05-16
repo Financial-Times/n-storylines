@@ -52,7 +52,8 @@
 	border: 0;
 	box-sizing: border-box;
 	&.n-storylines__heatmap-segment--all {
-		&:hover {
+		&:hover,
+		&:focus {
 			border: 1px solid;
 			cursor: pointer;
 			+ .n-storylines__summary {
