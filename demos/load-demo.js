@@ -1,6 +1,6 @@
-const main = require('../main');
+const main = require('../src/main');
 const template = require('../templates/main.html');
-const decorate = require('../lib/decorate');
+const decorate = require('../src/lib/decorate');
 
 fetch('./N2FkZjRhMWUtZDZjNS00ZTQ0LTg1MTMtMjYyYzBlODkzYTQ2-UE4=.json')
 	.then(res => res.json())
