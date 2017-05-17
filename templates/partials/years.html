@@ -1,13 +1,13 @@
 <div class="n-storylines__scroll-container">
 	<div class="n-storylines__scroll-segments">
 		{{#each children}}
-		<div class="n-storylines__heatmap-segment" data-trackable="year-segment" tabindex="0">
+		<div class="n-storylines__heatmap-segment" data-trackable="year-segment">
 			<ul class="dot-container">
 				{{#if dot}} {{#each dot}}
 				<li class='dot' style='margin-left: {{position}}%'>{{name}}</li>
 				{{/each}} {{/if}}
 			</ul>
-			<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all">
+			<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all" role="button" tabindex="0">
 				<div class="n-storylines__heatmap-segment-colour" style="opacity: {{weight}};"></div>
 			</div>
 			<div class="n-storylines__summary">
