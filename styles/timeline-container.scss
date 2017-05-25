@@ -16,11 +16,6 @@
 		z-index: -1;
 	}
 
-	&--hide-on-mobile {
-		@include oGridRespondTo($until: M) {
-			display: none;
-		}
-	}
 }
 
 .n-storylines__scroll-container {
