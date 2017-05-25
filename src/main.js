@@ -1,6 +1,7 @@
 const template = require('../templates/main.html');
 
 function init () {
+
 	const initialData = window && window.FT && window.FT.storylineData;
 	if (!initialData) return;
 
@@ -8,9 +9,13 @@ function init () {
 	const backBtns = document.getElementsByClassName('n-storylines__back-btn');
 
 	setupInteraction(initialData);
+	initialData.parent && setupBackBtn(initialData.parent);
 
 	function setupInteraction (data) {
-		backBtns[0].style.display = data === initialData ? 'none' : '';
+		const shouldHideBackButton = ((initialData.parent && data === initialData.parent) ||
+			(!initialData.parent && data === initialData));
+		if (shouldHideBackButton) backBtns[0].style.display = 'none';
+
 		if (!data.children) return;
 
 		for (let i = 0; i < heatmapSegments.length; i++) {
@@ -42,7 +47,11 @@ function init () {
 	function setupBackBtn (data) {
 		backBtns[0].addEventListener('click', () => {
 			renderStoryline(data);
-			setupBackBtn(initialData);
+			if (initialData.parent) {
+				setupBackBtn(initialData.parent);
+			} else {
+				setupBackBtn(initialData);
+			}
 		});
 	}
 }
