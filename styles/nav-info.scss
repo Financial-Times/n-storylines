@@ -25,12 +25,18 @@
 .n-storylines__nav {
 	height: 30px;
 	line-height: 0;
+
+	// HACK: display arrow correctly in IE11
+	// remove after o-button ^5.0.1
+	.n-storylines__back-btn {
+		background-size: 12px 12px;
+	}
 }
 
 .n-storylines__content-count {
 	color: rgba(0, 0, 0, 0.6);
 	float: right;
-	@include oTypographySansData(m) 
+	@include oTypographySansData(m);
 	@include oGridRespondTo($until: M) {
 		margin-bottom: 10px;
 	}
