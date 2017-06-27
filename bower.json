@@ -3,7 +3,8 @@
   "homepage": "https://github.com/Financial-Times/n-storylines",
   "description": "",
   "main": [
-    "main.scss"
+    "main.scss",
+    "src/main.js"
   ],
   "dependencies": {
     "n-ui-foundations": "^1.0.0"
