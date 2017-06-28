@@ -2,7 +2,7 @@
 
 .n-storylines__article-header {
 	color: $opaque;
-	@include oTypographySansData(m);
+	@include oTypographySans(-1);
 	@include oGridRespondTo($until: M) {
 		margin: 0 0 10px 0;
 	}
@@ -97,13 +97,13 @@
 }
 
 .n-storyline-timestamp {
-	@include oTypographySansData(m);
+	@include oTypographySans(-1);
 	color: $opaque;
 	margin: 0;
 }
 
 .n-storylines__article-link {
-	@include oTypographySerifDisplay(m);
+	@include oTypographyDisplay(2);
 	color: $filler;
 	text-decoration: none;
 	border-bottom: none;

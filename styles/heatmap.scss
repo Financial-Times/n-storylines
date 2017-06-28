@@ -67,7 +67,7 @@
 
 
 .n-storylines__heatmap-segment-name {
-	@include oTypographySans(s);
+	@include oTypographySans(-2);
 	color: $opaque;
 	position: relative;
 	margin: 10px 0 5px;
