@@ -18,13 +18,14 @@
 }
 
 .n-storylines__info {
-	@include oTypographySans(-1);
+	@include oTypographySans(2);
 	margin: 8px 0;
 }
 
 .n-storylines__nav {
 	height: 30px;
 	line-height: 0;
+	margin-bottom: 20px;
 
 	// HACK: display arrow correctly in IE11
 	// remove after o-button ^5.0.1
