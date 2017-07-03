@@ -7,6 +7,6 @@
     "src/main.js"
   ],
   "dependencies": {
-    "n-ui-foundations": "^v2.0.0-beta"
+    "n-ui-foundations": "^v2.0.0"
   }
 }
