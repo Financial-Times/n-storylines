@@ -14,7 +14,7 @@
 	width: 10px;
 	border-radius: 100%;
 	text-align: center;
-	@include oTypographySansData(xs)
+	@include oTypographySans(-2)
 	font-size: 10px;
 	line-height: 10px;
 	color: $background;
