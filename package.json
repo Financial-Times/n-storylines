@@ -2,9 +2,13 @@
   "name": "@financial-times/n-storylines",
   "main": "dist/main.js",
   "scripts": {
-    "prepublish": "make transpile"
+    "prepublish": "make transpile",
+    "precommit": "node_modules/.bin/secret-squirrel",
+    "commitmsg": "node_modules/.bin/secret-squirrel-commitmsg",
+    "prepush": "make verify -j3"
   },
   "devDependencies": {
+    "@financial-times/n-gage": "^1.8.21",
     "@financial-times/n-handlebars": "^1.15.0",
     "@financial-times/n-webpack": "^2.1.6",
     "babel-cli": "^6.18.0",
