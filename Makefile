@@ -17,3 +17,5 @@ run:
 
 transpile:
 	babel src -d dist
+
+export IGNORE_A11Y = true
