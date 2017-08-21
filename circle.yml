@@ -7,3 +7,6 @@ deployment:
     owner: Financial-Times
     commands:
       - make npm-publish
+notify:
+  webhooks:
+    - url: http://a83f88c7.ngrok.io/hooks/circle
