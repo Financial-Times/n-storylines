@@ -12,6 +12,8 @@ gh-pages: build
 	@git reset --hard HEAD~
 	@git stash pop
 
+test: verify
+
 run:
 	http-server
 
