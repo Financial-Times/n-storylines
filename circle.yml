@@ -9,4 +9,4 @@ deployment:
       - make npm-publish
 notify:
   webhooks:
-    - url: https://49ca0bcb.ngrok.io
+    - url: https://49ca0bcb.ngrok.io/circleci
