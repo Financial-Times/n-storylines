@@ -16,7 +16,7 @@ Containing the client- and server-side JS, SASS, and handlebars templates needed
 
 
 ## Add to an app
-     
+
 Node
 
 ``` javascript
