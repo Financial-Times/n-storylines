@@ -1,8 +1,8 @@
 const template = require('../templates/main.html');
 
-function init () {
+function init (data) {
 
-	const initialData = window && window.FT && window.FT.storylineData;
+	const initialData = data || (window && window.FT && window.FT.storylineData);
 	if (!initialData) return;
 
 	const heatmapSegments = document.getElementsByClassName('n-storylines__heatmap-segment');
