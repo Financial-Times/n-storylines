@@ -25,20 +25,20 @@
 .n-storylines__nav {
 	height: 30px;
 	line-height: 0;
-	margin-bottom: 20px;
+	margin-bottom: 0;
 
 	// HACK: display arrow correctly in IE11
 	// remove after o-button ^5.0.1
 	.n-storylines__back-btn {
-		background-size: 12px 12px;
-	}
-}
-
-.n-storylines__content-count {
-	color: rgba(0, 0, 0, 0.6);
-	float: right;
-	@include oTypographySans(-1);
-	@include oGridRespondTo($until: M) {
-		margin-bottom: 10px;
+		@include oTypographyLink();
+		@include oTypographySansBold(0);
+		background: none;
+		border: none;
+		&:before {
+			content: '';
+			width: 30px;
+			display: inline-block;
+			@include oIconsGetIcon('arrow-left', oColorsGetPaletteColor('teal'), 10);
+		}
 	}
 }
