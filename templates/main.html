@@ -1,6 +1,6 @@
 <div class="n-storylines" data-trackable="storyline">
 	<div class="n-storylines__info">
-		Explore articles from
+		{{#if prefLabel}}{{prefLabel}}: {{/if}}Explore articles from
 		{{#if children.0.children}}
 			{{children.0.name}}–Present
 		{{else}}
@@ -9,15 +9,11 @@
 	</div>
 
 	<div class="n-storylines__nav">
-		<div class="n-storylines__content-count">
-			{{total}} articles published
-		</div>
-
-		<button title="back" aria-label="back" class="n-storylines__back-btn o-buttons o-buttons--uncolored o-buttons--small o-buttons-icon o-buttons-icon--arrow-left" data-trackable="navigation">
+		<button title="back" aria-label="back" class="n-storylines__back-btn" data-trackable="navigation">
 			{{#if children.0.children}}
 				</button>
 			{{else if children}}
-				Years</button>
+				Previous years</button>
 			{{else}}
 				Months</button>
 			{{/if}}
@@ -30,15 +26,6 @@
 			{{> n-storylines/templates/partials/months}}
 		{{else}}
 			{{> n-storylines/templates/partials/single-month}}
-		{{/if}}
-	</div>
-
-	<div class="n-storylines__article-header">
-		Key articles from
-		{{#if children.0.children}}
-			{{children.0.name}}–Present
-		{{else}}
-			{{name}}
 		{{/if}}
 	</div>
 
