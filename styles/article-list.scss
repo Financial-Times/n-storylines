@@ -36,37 +36,12 @@
 	}
 
 	// covers varying line numbers for article titles in tablet
-		@include oGridRespondTo(M, $until: L) {
-			&:nth-child(4) {
-				clear: left;
-			}
-		}
-
-	// lines across all viewports
-	&::after {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		// vertical rule - mobile
-		@include oGridRespondTo($until: M) {
-			border-left-width: 1px;
-			height: 100%;
-			left: -23px;
-			top: 27px;
-		}
-		// horizontal rule - general
-		@include oGridRespondTo(M) {
-			border-top-width: 1px;
-			top: 13px;
-			right: -41px;
-			width: 100%;
+	@include oGridRespondTo(M, $until: L) {
+		&:nth-child(4) {
+			clear: left;
 		}
 	}
 
-	// the last one should _never_ have a border!
-	&:last-child::after {
-		content: none;
-	}
 
 	// tablet viewport only
 	@include oGridRespondTo(M, $until: L) {
