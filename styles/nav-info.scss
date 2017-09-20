@@ -36,9 +36,10 @@
 		border: none;
 		&:before {
 			content: '';
-			width: 30px;
 			display: inline-block;
-			@include oIconsGetIcon('arrow-left', oColorsGetPaletteColor('teal'), 10);
+			@include oIconsGetIcon('arrow-left', oColorsGetPaletteColor('teal'), 12);
+			position: relative;
+			top: 1px;
 		}
 	}
 }
