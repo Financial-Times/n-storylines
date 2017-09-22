@@ -10,7 +10,8 @@
 			{{#ifEquals weight 0}}
 			<div class="n-storylines__heatmap-segment-none"></div>
 			{{else}}
-			<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all" role="button" tabindex="0">
+			<div class="n-storylines__heatmap-segment-colour--background n-storylines__heatmap-segment--all" tabindex="0">
+				<span class="n-util-visually-hidden">View stories from {{name}}</span>
 				<div class="n-storylines__heatmap-segment-colour n-storylines__all-months" style="opacity: {{weight}};"></div>
 			</div>
 			<div class="n-storylines__summary">
