@@ -25,7 +25,8 @@
 .n-storylines__nav {
 	height: 30px;
 	line-height: 0;
-	margin-bottom: 0;
+	margin-top: 12px;
+	margin-bottom: 12px;
 
 	// HACK: display arrow correctly in IE11
 	// remove after o-button ^5.0.1
@@ -34,12 +35,14 @@
 		@include oTypographySansBold(0);
 		background: none;
 		border: none;
+		position: absolute;
+		left: -12px;
 		&:before {
 			content: '';
 			display: inline-block;
-			@include oIconsGetIcon('arrow-left', oColorsGetPaletteColor('teal'), 12);
+			@include oIconsGetIcon('arrow-left', oColorsGetPaletteColor('teal'), 20, $iconset-version: 1);
 			position: relative;
-			top: 1px;
+			top: 5px;
 		}
 	}
 }
