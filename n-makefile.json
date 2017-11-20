@@ -1,8 +1,8 @@
 {
   "assets": {
-     "entry": {
-         "./demos/public/main.css": "./main.scss",
-         "./demos/public/index.js": "./demos/load-demo.js"
-      }
+      "entry": {
+          "./demos/public/main.css": "./main.scss",
+          "./demos/public/index.js": "./demos/load-demo.js"
+        }
   }
 }
